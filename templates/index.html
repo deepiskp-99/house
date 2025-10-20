@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+    <style>
+              body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://media.istockphoto.com/id/483773209/photo/new-cozy-cottage.jpg?s=612x612&w=0&k=20&c=y1rwmoHBg-ZoE7L5WkIWjrTmwXofzqIbozTJyftDu1E='); /* house image URL */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <h2>🏠 House Price Prediction</h2>
+            <form action="/predict" method="post">
+                <label>Flat Area (in Sqft):</label>
+                <input type="number" name="Flat Area (in Sqft)" placeholder="e.g. 1200" required>
+
+                <label>No of Bathrooms:</label>
+                <input type="number" name="No of Bathrooms" placeholder="e.g. 2" required>
+
+                <label>No of Bedrooms:</label>
+                <input type="number" name="No of Bedrooms" placeholder="e.g. 3" required>
+
+                <button type="submit">Predict Price</button>
+            </form>
+
+            {% if prediction_text %}
+                <div class="result">{{ prediction_text }}</div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
